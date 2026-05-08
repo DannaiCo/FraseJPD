@@ -21,12 +21,17 @@
       background: #ffffff;
     }
 
-    .contenedor {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
+   .contenedor {
+
+  position: relative;
+
+  width: 768px;
+  height: 768px;
+
+  overflow: hidden;
+
+  transform-origin: 0 0;
+}
 
     /* VIDEO */
     #fondoVideo {
@@ -129,7 +134,20 @@
   </div>
 
   <script>
+function escalarPantalla() {
 
+  const escalaX = window.innerWidth / 768;
+  const escalaY = window.innerHeight / 768;
+
+  const escala = Math.min(escalaX, escalaY);
+
+  document.querySelector(".contenedor").style.transform =
+    `scale(${escala})`;
+}
+
+window.addEventListener("resize", escalarPantalla);
+
+escalarPantalla();
     const url =
       "https://script.google.com/macros/s/AKfycbwJNwjEI0QjntRwNEl3PlPf-IC5Dd15R6dSlcaRtkgOpNljXK77EKLikm1W3PGZkjS5jA/exec";
 
